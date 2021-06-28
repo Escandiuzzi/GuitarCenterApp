@@ -12,14 +12,8 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.guitarcenterapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.guitarcenterapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_guitars"
+        android:name="com.example.guitarcenterapp.ui.guitars.Guitars"
+        android:label="@string/menu_guitars"
+        tools:layout="@layout/guitars_fragment" />
 </navigation>
