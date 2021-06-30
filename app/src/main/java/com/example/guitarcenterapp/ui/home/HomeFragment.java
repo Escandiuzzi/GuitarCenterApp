@@ -26,6 +26,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+
     private FragmentHomeBinding binding;
 
     private FloatingActionButton floatingActionButton;
@@ -50,9 +51,9 @@ public class HomeFragment extends Fragment {
 
         products = new ArrayList<Product>();
 
-        products = dbsqLiteHelper.getAllProducts();
+        products = dbsqLiteHelper.getAllProducts("");
 
-        recyclerView = (RecyclerView) binding.rvGuitars;
+        recyclerView = (RecyclerView) binding.rvHome;
         floatingActionButton = (FloatingActionButton) binding.fab;
 
         int numberOfColumn = UtilityHelper.calculateNoOfColumns(getContext(), 160);

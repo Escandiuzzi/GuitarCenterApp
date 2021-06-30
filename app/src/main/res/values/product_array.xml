@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="products_array">
+        <item>Guitar</item>
+        <item>Bass</item>
+        <item>Amps</item>
+    </string-array>
+</resources>

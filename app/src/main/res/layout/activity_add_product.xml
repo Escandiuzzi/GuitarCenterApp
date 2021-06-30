@@ -32,13 +32,13 @@
         android:layout_marginTop="15dp"
         android:layout_marginHorizontal="30dp"/>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tiType"
+    <Spinner
+        android:id="@+id/sType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type"
         android:layout_marginTop="15dp"
         android:layout_marginHorizontal="30dp"/>
+
 
     <ImageView
         android:id="@+id/ivProduct"

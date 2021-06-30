@@ -17,8 +17,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.example.guitarcenterapp.Helpers.BitmapHelper;
 import com.example.guitarcenterapp.Helpers.DBSQLiteHelper;
@@ -50,7 +52,8 @@ public class AddProductActivity extends AppCompatActivity {
     TextInputEditText tiName;
     TextInputEditText tiBrand;
     TextInputEditText tiPrice;
-    TextInputEditText tiType;
+
+    Spinner sType;
 
     ImageView ivImage;
 
@@ -72,9 +75,17 @@ public class AddProductActivity extends AppCompatActivity {
         tiName = (TextInputEditText) findViewById(R.id.tiName);
         tiBrand = (TextInputEditText) findViewById(R.id.tiBrand);
         tiPrice = (TextInputEditText) findViewById(R.id.tiPrice);
-        tiType = (TextInputEditText) findViewById(R.id.tiType);
 
         ivImage = (ImageView) findViewById(R.id.ivProduct);
+
+        sType = (Spinner) findViewById(R.id.sType);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.products_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        sType.setAdapter(adapter);
+
 
         verifyStoragePermissions(AddProductActivity.this);
 
@@ -94,7 +105,7 @@ public class AddProductActivity extends AppCompatActivity {
                 product.setName(tiName.getText().toString());
                 product.setBrand(tiBrand.getText().toString());
                 product.setPrice(Float.valueOf(tiPrice.getText().toString()));
-                product.setType(tiType.getText().toString());
+                product.setType(sType.getSelectedItem().toString());
 
                 Uri uri = BitmapHelper.getImageUri(getApplicationContext(), photo);
 

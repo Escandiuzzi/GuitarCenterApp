@@ -110,6 +110,35 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         return products;
     }
 
+    public List<Product> getAllProducts(String filter) {
+        List<Product> products = new ArrayList<Product>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query;
+
+        if(filter.equals(""))
+            query = "SELECT * FROM " + PRODUCTS_TABLE + " ORDER BY " + NAME;
+
+        else
+            query = "SELECT * FROM " + PRODUCTS_TABLE + " WHERE "+ TYPE + " = " + "'" + filter + "'" + " ORDER BY " + NAME;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()) {
+
+            do {
+                Product product = cursorToProduct(cursor);
+                products.add(product);
+
+            } while(cursor.moveToNext());
+
+        }
+
+        return products;
+    }
+
+
     public int updateProduct(Product product) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -120,8 +149,8 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(NAME, product.getName());
         contentValues.put(BRAND, product.getBrand());
         contentValues.put(PRICE, product.getPrice());
-        contentValues.put(TYPE, product.getPrice());
-        contentValues.put(SOLD, product.getPrice());
+        contentValues.put(TYPE, product.getType());
+        contentValues.put(SOLD, product.isSold());
         contentValues.put(IMAGE, product.getImagePath());
 
         int i = db.update(PRODUCTS_TABLE,
