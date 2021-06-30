@@ -16,4 +16,14 @@
         android:name="com.example.guitarcenterapp.ui.guitars.Guitars"
         android:label="@string/menu_guitars"
         tools:layout="@layout/guitars_fragment" />
+    <fragment
+        android:id="@+id/nav_basses"
+        android:name="com.example.guitarcenterapp.ui.basses.BassesFragment"
+        android:label="@string/menu_basses"
+        tools:layout="@layout/basses_fragment" />
+    <fragment
+        android:id="@+id/nav_amps"
+        android:name="com.example.guitarcenterapp.ui.amps.AmpsFragment"
+        android:label="@string/menu_amps"
+        tools:layout="@layout/amps_fragment" />
 </navigation>

@@ -6,11 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/outline_store_white_18"
+            android:icon="@drawable/guitar_pick_icon"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_guitars"
-            android:icon="@drawable/outline_music_note_white_18"
+            android:icon="@drawable/electric_guitar_icon"
             android:title="@string/menu_guitars" />
+        <item
+            android:id="@+id/nav_basses"
+            android:icon="@drawable/bass_guitar_icon"
+            android:title="@string/menu_basses" />
+        <item
+            android:id="@+id/nav_amps"
+            android:icon="@drawable/amp_icon"
+            android:title="@string/menu_amps" />
     </group>
 </menu>

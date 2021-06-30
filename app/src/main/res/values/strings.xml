@@ -13,4 +13,6 @@
     <string name="menu_guitars">Guitars</string>
     <string name="ok">Ok</string>
     <string name="error">Error</string>
+    <string name="menu_basses">Basses</string>
+    <string name="menu_amps">Amps</string>
 </resources>
