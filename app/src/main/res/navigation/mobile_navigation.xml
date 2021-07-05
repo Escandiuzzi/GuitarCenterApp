@@ -26,4 +26,9 @@
         android:name="com.example.guitarcenterapp.ui.amps.AmpsFragment"
         android:label="@string/menu_amps"
         tools:layout="@layout/amps_fragment" />
+    <fragment
+        android:id="@+id/nav_sold"
+        android:name="com.example.guitarcenterapp.ui.sold.SoldFragment"
+        android:label="@string/menu_sold"
+        tools:layout="@layout/sold_fragment" />
 </navigation>

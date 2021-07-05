@@ -118,10 +118,10 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         String query;
 
         if(filter.equals(""))
-            query = "SELECT * FROM " + PRODUCTS_TABLE + " ORDER BY " + NAME;
+            query = "SELECT * FROM " + PRODUCTS_TABLE + " WHERE "+ SOLD + " =  0 " + "ORDER BY " + NAME;
 
         else
-            query = "SELECT * FROM " + PRODUCTS_TABLE + " WHERE "+ TYPE + " = " + "'" + filter + "'" + " ORDER BY " + NAME;
+            query = "SELECT * FROM " + PRODUCTS_TABLE + " WHERE "+ TYPE + " = " + "'" + filter + "'" + " AND SOLD = 0 " + " ORDER BY " + NAME;
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -138,6 +138,29 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         return products;
     }
 
+    public List<Product> getSoldProducts() {
+        List<Product> products = new ArrayList<Product>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query;
+
+        query = "SELECT * FROM " + PRODUCTS_TABLE + " WHERE " + SOLD + " = " + "1" + " ORDER BY " + NAME;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()) {
+
+            do {
+                Product product = cursorToProduct(cursor);
+                products.add(product);
+
+            } while(cursor.moveToNext());
+
+        }
+
+        return products;
+    }
 
     public int updateProduct(Product product) {
 
@@ -162,11 +185,11 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public int deleteProduct(Product product) {
+    public int deleteProduct(int id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        int i = db.delete(PRODUCTS_TABLE, ID + " = ?", new String[]{ String.valueOf(product.getId()) } );
+        int i = db.delete(PRODUCTS_TABLE, ID + " = ?", new String[]{ String.valueOf(id) } );
 
         db.close();
 

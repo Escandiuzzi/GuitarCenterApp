@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumn);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        adapter = new Adapter(products);
+        adapter = new Adapter(this.getContext(), products);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

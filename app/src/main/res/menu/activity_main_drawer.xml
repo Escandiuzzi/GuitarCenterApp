@@ -20,5 +20,10 @@
             android:id="@+id/nav_amps"
             android:icon="@drawable/amp_icon"
             android:title="@string/menu_amps" />
+
+        <item
+            android:id="@+id/nav_sold"
+            android:icon="@drawable/outline_sell_black_18"
+            android:title="@string/menu_sold" />
     </group>
 </menu>

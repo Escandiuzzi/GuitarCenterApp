@@ -1,4 +1,4 @@
-package com.example.guitarcenterapp.ui.basses;
+package com.example.guitarcenterapp.ui.sold;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,21 +20,22 @@ import com.example.guitarcenterapp.Helpers.UtilityHelper;
 import com.example.guitarcenterapp.Models.Product;
 import com.example.guitarcenterapp.R;
 import com.example.guitarcenterapp.databinding.BassesFragmentBinding;
-import com.example.guitarcenterapp.databinding.FragmentHomeBinding;
-import com.example.guitarcenterapp.ui.guitars.GuitarsViewModel;
+import com.example.guitarcenterapp.databinding.SoldFragmentBinding;
+import com.example.guitarcenterapp.ui.basses.BassesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BassesFragment extends Fragment {
+public class SoldFragment extends Fragment {
 
-    private BassesViewModel mViewModel;
-    public static BassesFragment newInstance() {
-        return new BassesFragment();
+    private SoldViewModel mViewModel;
+
+    public static SoldFragment newInstance() {
+        return new SoldFragment();
     }
 
-    private BassesFragmentBinding binding;
+    private SoldFragmentBinding binding;
 
     private FloatingActionButton floatingActionButton;
 
@@ -46,23 +47,23 @@ public class BassesFragment extends Fragment {
 
     private Adapter adapter;
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
         mViewModel =
-                new ViewModelProvider(this).get(BassesViewModel.class);
+                new ViewModelProvider(this).get(SoldViewModel.class);
 
-        binding = BassesFragmentBinding.inflate(inflater, container, false);
+        binding = SoldFragmentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         dbsqLiteHelper = new DBSQLiteHelper(getContext());
 
         products = new ArrayList<Product>();
 
-        products = dbsqLiteHelper.getAllProducts("Bass");
+        products = dbsqLiteHelper.getSoldProducts();
 
-        recyclerView = (RecyclerView) binding.rvBasses;
+        recyclerView = (RecyclerView) binding.rvSold;
 
         int numberOfColumn = UtilityHelper.calculateNoOfColumns(getContext(), 160);
 
@@ -70,6 +71,7 @@ public class BassesFragment extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
 
         adapter = new Adapter(this.getContext(), products);
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -80,7 +82,7 @@ public class BassesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BassesViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SoldViewModel.class);
         // TODO: Use the ViewModel
     }
 
